@@ -1,21 +1,36 @@
 let model;
+let promptEl = document.getElementById('prompt');
 
 (async function() {
     document.getElementById('billTextContainer').textContent = billText;
 
+    // Disable submit until model loaded
+    document.getElementById('submitBtn').disabled = true;
+
     // load the model
-    console.log('loading model....');
+    promptEl.textContent = 'loading model....';
     model = await qna.load();
-    console.log('loading model.... done.');
+    promptEl.textContent = 'loading model.... done.';
+
+    // Disable submit until model loaded
+    document.getElementById('submitBtn').disabled = false;
 
 
     // Handle form submit
     document.getElementById('questionForm').onsubmit = async (e) => {
         e.preventDefault();
 
+        promptEl.textContent = 'asking question....';
         const questionText = document.getElementById('question').value;
+        // give it a moment to render the prompt
+        // before maxing out the CPU
+        await new Promise(res => setTimeout(res, 10));
         const answers = await ask(questionText);
         console.log(answers);
+        promptEl.textContent = `
+            asking question.... complete! 
+            Found ${answers.length} answers
+        `;
 
         renderAnswers(answers);
     }
@@ -32,10 +47,15 @@ function renderAnswers(answers) {
         <ul>
             ${answers.map(ans => `
                 <li>
-                    <pre>
-                    ...${ans.beforeText}<strong>${ans.text}</strong>${ans.afterText}... 
-                    </pre>
-                    <i>score: ${ans.score.toFixed(2)}</i>
+                    <details>
+                        <summary>
+                            <strong>${ans.text} </strong> 
+                            score: ${ans.score.toFixed(2)}
+                        </summary>
+                        <pre>
+                        ...${ans.beforeText}<strong>${ans.text}</strong>${ans.afterText}...
+                        </pre>
+                    </details>
                 </li>
             `).join('\n')}
         </ul>
