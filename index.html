@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QnA Model Sandbox</title>
+
+    <style>
+        #billTextContainer {
+            max-height: 300px;
+            overflow: scroll;
+            padding: 10px;
+            border: 1px solid grey;
+        }
+    </style>
+
+    <!-- Load TensorFlow.js. This is required to use the qna model. -->
+    <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs"> </script>
+    <!-- Load the qna model. -->
+    <script src="https://cdn.jsdelivr.net/npm/@tensorflow-models/qna"> </script>    
+</head>
+<body>
+    
+    <ul>
+        <li>
+            QnA Model: <a href="https://github.com/tensorflow/tfjs-models/blob/master/qna/README.md">on Github</a>
+        </li>
+        <li>
+            Bill Text: <a href="https://openstates.org/mn/bills/2021-2022/HF1375/">on OpenStates</a>
+        </li>
+
+    </ul>
+
+    <h2>HF 1375</h2>
+    <p>
+        Elections; ranked-choice voting provided for in federal and state office elections; jurisdictions authorized to adopt ranked-choice voting for local offices; adoption, implementation, and use of ranked-choice voting procedures established; municipalities allowed to use electronic voting systems with reallocation feature; and rulemaking authorized.
+    </p>
+    
+    <form>
+        <label>
+            Ask a question about HF 1375
+            <input type="text" id="question" />
+            <input type="submit" value="Ask!">
+        </label>
+    </form>
+
+    <pre id="billTextContainer"></pre>
+
+    <p id="response"></p>
+
+    <pre id="errorMsg"></pre>
+
+    <script src="./bill.txt.js"></script>
+    <script src="./script.js"></script>
+</body>
+</html>
