@@ -31,6 +31,22 @@
             border-bottom: 1px solid #999;
         }
 
+        .container {
+            display: flex;
+        }
+
+        .container > div {
+            max-width: 50%;
+            padding: 0 20px;
+            overflow: scroll
+        }
+        .container > div:first-child {
+            width: 440px;
+        }
+        details {
+            overflow: scroll;
+        }
+
     </style>
 
     <!-- Load TensorFlow.js. This is required to use the qna model. -->
@@ -50,30 +66,36 @@
 
     </ul>
 
-    <h2>HF 1375</h2>
-    <p>
-        Elections; ranked-choice voting provided for in federal and state office elections; jurisdictions authorized to adopt ranked-choice voting for local offices; adoption, implementation, and use of ranked-choice voting procedures established; municipalities allowed to use electronic voting systems with reallocation feature; and rulemaking authorized.
-    </p>
-    
-    <form id="questionForm">
-        <label>
-            Ask a question about HF 1375
-            <input 
-                type="text" 
-                id="question"
-                value="What is ranked-choice voting?"
-            />
-        </label>
+    <div class="container">
+        <div>
 
-        <code id="prompt"></code>
-        <pre id="errorMsg"></pre>
-        
-        <input type="submit" value="Ask!" id="submitBtn">
-    </form>
+            <h2>HF 1375</h2>
+            <p>
+                Elections; ranked-choice voting provided for in federal and state office elections; jurisdictions authorized to adopt ranked-choice voting for local offices; adoption, implementation, and use of ranked-choice voting procedures established; municipalities allowed to use electronic voting systems with reallocation feature; and rulemaking authorized.
+            </p>
+            
+            <form id="questionForm">
+                <label>
+                    Ask a question about HF 1375
+                    <input 
+                        type="text" 
+                        id="question"
+                        value="What is ranked-choice voting?"
+                    />
+                </label>
+                
+                <input type="submit" value="Ask!" id="submitBtn">
+            </form>
 
-    <pre id="billTextContainer"></pre>
+            <pre id="billTextContainer"></pre>
+        </div>
 
-    <p id="results"></p>
+        <div>
+            <code id="prompt"></code>
+            <pre id="errorMsg"></pre>
+            <p id="results"></p>
+        </div>
+    </div>
 
     <script src="./bill.txt.js"></script>
     <script src="./script.js"></script>

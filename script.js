@@ -50,7 +50,7 @@ function renderAnswers(answers) {
                     <details>
                         <summary>
                             <strong>${ans.text} </strong> 
-                            score: ${ans.score.toFixed(2)}
+                            <div>score: ${ans.score.toFixed(2)}</div>
                         </summary>
                         <pre>
                         ...${ans.beforeText}<strong>${ans.text}</strong>${ans.afterText}...
