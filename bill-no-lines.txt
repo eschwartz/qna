@@ -1,6 +1,3 @@
-const billText = `
-https://openstates.org/mn/bills/2021-2022/HF1375/
-
 A bill for an act
 relating to elections; providing for ranked-choice voting in elections for federal 
 and state offices; authorizing jurisdictions to adopt ranked-choice voting for local 
@@ -612,4 +609,3 @@ electors or alternates have the highest and an equal number of votes, the secret
 in the presence of the board shall decide by lot which of the persons shall be declared elected. 
 The governor shall transmit to each person declared elected a certificate of election, signed 
 by the governor, sealed with the state seal, and countersigned by the secretary of state.
-`;
